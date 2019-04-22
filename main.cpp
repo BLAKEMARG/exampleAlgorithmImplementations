@@ -1,6 +1,15 @@
 #include "container.h"
 
 int main() {
-    container<string> s;
+    container<char> s;
+    string in;
+    cout << "enter stuff" << endl;
+    cin >> in;
+
+    for (int i = 0; i < in.size(); i++) {
+        s.addEntry(in[i]);
+    }
+
+    s.makeempty();
 
 }
