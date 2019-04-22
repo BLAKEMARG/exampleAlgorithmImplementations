@@ -1,4 +1,6 @@
-#include <iostream>
-#include <cstdef>
 #include "container.h"
 
+int main() {
+    container<string> s;
+
+}
