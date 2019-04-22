@@ -11,7 +11,7 @@
 using namespace std;
 // container is a simple container class
 
-//relational opeator >, <, and == must be overriden to work
+//relational opeator >, <, and == must be overriden to work, and += with string as well.
 
 template<class ItemType>
 class container {
@@ -26,12 +26,18 @@ public:
 
     void addEntry(ItemType item);
 
+    void bubbleSort();
+
+    string toString();
+
+
 private:
     struct ListNode {
         ItemType data = NULL;
         ListNode *next = NULL;
     };
 
+    int numNodes = 0;
     ListNode *root = NULL;
 
 
@@ -65,6 +71,40 @@ void container<ItemType>::addEntry(ItemType item) {
 
         ptr->next = temp;
     }
+
+    numNodes++;
+}
+
+template<class ItemType>
+void container<ItemType>::bubbleSort() {
+
+    for (int i = 0; i < numNodes; i++) {
+        ListNode *ptr = root;
+        while (ptr->next != NULL) {
+
+            if (ptr->data > ptr->next->data) { //should be ascending so this means time to swap
+                ItemType tmp = ptr->next->data;
+                ptr->next->data = ptr->data;
+                ptr->data = tmp;
+
+            }
+
+            ptr = ptr->next;
+        }
+    }
+
+}
+
+template<class ItemType>
+string container<ItemType>::toString() {
+    string returnVal;
+    ListNode *ptr = root;
+    while (ptr != NULL) {
+        returnVal += ptr->data;
+        ptr = ptr->next;
+    }
+
+    return (returnVal);
 }
 
 #endif //MAIN_CPP_CONTAINER_H

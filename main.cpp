@@ -9,7 +9,8 @@ int main() {
     for (int i = 0; i < in.size(); i++) {
         s.addEntry(in[i]);
     }
+    cout << endl;
 
-    s.makeempty();
-
+    s.bubbleSort();
+    cout << s.toString() << endl;
 }
