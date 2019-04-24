@@ -18,6 +18,8 @@ class container {
 public:
     container() = default;
 
+    container(const container &old);
+
     ~container() {
         makeempty();
     }
@@ -28,6 +30,7 @@ public:
 
     void bubbleSort();
 
+    void selectSort();
     string toString();
 
 
@@ -42,6 +45,15 @@ private:
 
 
 };
+
+template<class ItemType>
+container<ItemType>::container(const container &old) {
+    ListNode *oldPtr = old.root;
+    while (oldPtr != NULL) {
+        addEntry(oldPtr->data);
+        oldPtr = oldPtr->next;
+    }
+}
 
 template<class ItemType>
 void container<ItemType>::makeempty() {
@@ -92,6 +104,11 @@ void container<ItemType>::bubbleSort() {
             ptr = ptr->next;
         }
     }
+
+}
+
+template<class ItemType>
+void container<ItemType>::selectSort() {
 
 }
 
