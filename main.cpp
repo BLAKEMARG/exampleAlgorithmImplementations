@@ -12,9 +12,10 @@ int main() {
 
     cout << endl;
 
-    container<char> original = container<char>(s);
+    container<char> s1 = container<char>(s);
     s.bubbleSort();
     cout << s.toString() << endl;
-    cout << original.toString() << endl;
+    s1.selectSort();
+    cout << s1.toString() << endl;
 
 }

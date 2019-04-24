@@ -31,6 +31,10 @@ public:
     void bubbleSort();
 
     void selectSort();
+
+    int getnumNodes() {
+        return (numNodes);
+    }
     string toString();
 
 
@@ -58,7 +62,6 @@ container<ItemType>::container(const container &old) {
 template<class ItemType>
 void container<ItemType>::makeempty() {
     ListNode *ptr = root;
-
     while (ptr != NULL) {
         ListNode *temp = ptr;
         ptr = ptr->next;
@@ -72,7 +75,6 @@ void container<ItemType>::addEntry(ItemType item) {
     auto *temp = new ListNode;
     temp->data = item;
     temp->next = NULL;
-
     if (root == NULL) {
         root = temp;
     } else {
@@ -109,7 +111,22 @@ void container<ItemType>::bubbleSort() {
 
 template<class ItemType>
 void container<ItemType>::selectSort() {
+    int length = getnumNodes();
+    ListNode *iPtr = root;
+    ListNode *jPtr;
+    for (int i = 0; i < length; i++) {
+        jPtr = iPtr;
+        for (int j = 1; j < (length - i); j++) {
+            if (jPtr->data < iPtr->data) {
+                ItemType temp = jPtr->data;
+                jPtr->data = iPtr->data;
+                iPtr->data = temp;
+            }
+            jPtr = jPtr->next;
+        }
 
+        iPtr = iPtr->next;
+    }
 }
 
 template<class ItemType>
